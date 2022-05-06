@@ -5,6 +5,7 @@ import classes from "./AuthForm.module.css";
 import AuthContext from "../../store/auth-context";
 
 const AuthForm = () => {
+  
   const [isLoading, setIsLoading] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const context = useContext(AuthContext);
@@ -44,7 +45,6 @@ const AuthForm = () => {
       });
       if(response.ok){
         const data = await response.json();
-        console.log(data.idToken);
         context.login(data.idToken);
         if(isLogin){
           history.replace("/profile")
